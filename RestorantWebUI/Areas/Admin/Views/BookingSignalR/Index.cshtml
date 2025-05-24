@@ -1,0 +1,90 @@
+﻿@model List<ResultBookingDto>
+
+@{
+    ViewData["Title"] = "Index";
+	Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+	int count = 0;
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+<div class="content">
+	<div class="container-fluid">
+
+		<script type="text/javascript">
+
+			$(document).ready(() => {
+
+				var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:44301/SignalRHub").build();
+				$("#connstatus").text(connection.state);
+				connection.start().then(() => {
+					$("#connstatus").text(connection.state);
+					setInterval(() => {
+						connection.invoke("GetBookingList");
+					}, 2000);
+				}).catch((err) => { console.log(err) });
+
+
+				connection.on("ReceiveBookingList", (value) => {
+					console.log(value);
+					let tablehtml = `<table class=table mt-3><thead>
+									 <tr>
+									 <th scope="col">#</th>
+									 <th scope="col">Name</th>
+									 <th scope="col">Phone</th>
+									 <th scope="col">Mail</th>
+									 <th scope="col">Persons</th>
+									 <th scope="col">Date</th>
+									 <th scope="col">Delete</th>
+									 <th scope="col">Update</th>
+									 <th scope="col">Confirm</th>
+									 <th scope="col">Decline</th>
+									 </tr>
+									 </thead>
+									 <tbody>`
+					$.each(value, (index, item) => {
+						tablehtml += `<tr>
+									<th>${index+1}</th>
+									<td>${item.BookingName}</td>
+									<td>${item.BookingPhone}</td>
+									<td>${item.BookingMail}</td>
+									<td>${item.BookingPersonCount}</td>
+									<td>${item.BookingDate}</td>
+									<td><a href="/Booking/DeleteBooking/${item.BookingId}" class="btn btn-outline-danger">Sil</a></td>
+									<td><a href="/Booking/UpdateBooking/${item.BookingId}" class="btn btn-outline-success">Güncelle</a></td>
+									<td><a href="/Booking/BookingStatusApproved/${item.BookingId}" class="btn btn-outline-info">Onayla</a></td>
+									<td><a href="/Booking/BookingStatusCancelled/${item.BookingId}" class="btn btn-outline-dark">İptal Et</a></td>
+									</tr>`
+					});
+					tablehtml += "</tbody></table>";
+					$("#bookingList").html(tablehtml);
+				});
+			});
+
+		</script>
+
+		<h4 class="page-title">Booking Process</h4>
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Rezervation List</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							You can view, edit, delete or add new booking from here.
+						</div>
+						<div id="bookingList"></div>
+						<a href="/Booking/BookingSignalR/" class="btn btn-outline-primary">Add New Rezervation</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,56 @@
+﻿@model List<ResultContactDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Contact Page</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-sub">
+                            You can view, edit, delete or add new contacts from here.
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="card-body">
+                            <input type="hidden" asp-for="@item.ContactId" />
+                            <div class="form-group">
+                                <label for="categoryname">Location</label>
+                                <input type="text" class="form-control" value="@item.ContactLocation">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Phone</label>
+                                <input type="text" class="form-control" value="@item.ContactPhone">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Mail</label>
+                                <input type="text" class="form-control" value="@item.ContactMail">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Footer Description</label>
+                                <textarea class="form-control">@item.FooterDescription</textarea>
+                            </div>
+                            <a href="/Admin/Contact/Update/@item.ContactId" class="btn btn-outline-warning">Update</a>
+                            <a href="/Admin/Contact/Delete/@item.ContactId" class="btn btn-outline-danger">Delete</a>
+
+                        </div>
+                    }
+                    <div class="card-action">
+                        <a href="/Admin/Contact/Create" class="btn btn-outline-info">Add Category</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

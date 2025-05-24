@@ -1,0 +1,49 @@
+﻿@model UpdateTestimonialDto
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Testimonial Process</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Update Testimonial</div>
+                        </div>
+                        <div class="card-body">
+                            <input type="hidden" asp-for="TestimonialId" />
+                            <div class="form-group">
+                                <label for="categoryname">Name</label>
+                                <input type="text" class="form-control" asp-for="TestimonialName">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Title</label>
+                                <input type="text" class="form-control" asp-for="TestimonialTitle">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Image Url</label>
+                                <input type="text" class="form-control" asp-for="TestimonialImageUrl">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Status</label>
+                                <input type="text" class="form-control" asp-for="TestimonialStatus">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Commnet</label>
+                                <textarea class="form-control" asp-for="TestimonialCommnet"></textarea>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn btn-primary">Update Testimonial</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

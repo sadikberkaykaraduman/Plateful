@@ -1,0 +1,11 @@
+﻿@model List<ResultCategoryDto>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<ul class="filters_menu">
+    <li class="active" data-filter="*">All</li>
+    @foreach (var item in Model)
+    {
+        <li data-filter=".@item.CategoryName">@item.CategoryName</li>
+    }
+</ul>

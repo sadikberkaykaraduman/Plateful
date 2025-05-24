@@ -1,0 +1,56 @@
+﻿@model List<ResultOrderDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Order List</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							You can view, edit, delete or add new order from here.
+						</div>
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Table No</th>
+									<th scope="col">Status</th>
+									<th scope="col">Operations</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.OrderId</td>
+										<td>@item.OrderTableNumber</td>
+										<td>@item.OrderStatus</td>
+										<td>
+											<a href="/Admin/Order/Update/@item.OrderId" class="btn btn-outline-warning">Update</a>
+											<a href="/Admin/Order/Delete/@item.OrderId" class="btn btn-outline-danger">Delete</a>
+											<a href="/Admin/Order/Details/@item.OrderId" class="btn btn-outline-dark">Detail</a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<br />
+						<a href="/Admin/Order/Create" class="btn btn-outline-info">Add Order</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

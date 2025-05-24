@@ -1,0 +1,58 @@
+﻿@model List<ResultBookingDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Booking List</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							You can view, edit, delete or add new booking from here.
+						</div>
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Name</th>
+									<th scope="col">Phone</th>
+									<th scope="col">Mail</th>
+									<th scope="col">Person</th>
+									<th scope="col">Date</th>
+									<th scope="col">Operations</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.BookingId</td>
+										<td>@item.BookingName</td>
+										<td>@item.BookingPhone</td>
+										<td>@item.BookingMail</td>
+										<td>@item.BookingPersonCount</td>
+										<td>@item.BookingDate</td>
+										<td>
+											<a href="/Admin/Booking/Update/@item.BookingId" class="btn btn-outline-warning">Update</a>
+											<a href="/Admin/Booking/Delete/@item.BookingId" class="btn btn-outline-danger">Delete</a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<br />
+						<a href="/Admin/Booking/Create" class="btn btn-outline-info">Add Booking</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

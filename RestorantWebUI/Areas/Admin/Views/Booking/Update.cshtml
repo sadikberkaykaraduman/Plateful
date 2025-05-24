@@ -1,0 +1,49 @@
+﻿@model UpdateBookingDto
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Booking Process</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Update Booking</div>
+                        </div>
+                        <div class="card-body">
+                            <input type="hidden" asp-for="BookingId" />
+                            <div class="form-group">
+                                <label for="categoryname">Name</label>
+                                <input type="text" class="form-control" asp-for="BookingName">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Phone</label>
+                                <input type="text" class="form-control" asp-for="BookingPhone">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Mail</label>
+                                <input type="text" class="form-control" asp-for="BookingMail">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Person</label>
+                                <input type="text" class="form-control" asp-for="BookingPersonCount">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Date</label>
+                                <input type="text" class="form-control" asp-for="BookingDate">
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <button class="btn btn-primary">Add Booking</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

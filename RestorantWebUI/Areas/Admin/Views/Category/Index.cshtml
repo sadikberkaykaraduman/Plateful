@@ -1,0 +1,50 @@
+﻿@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Category List</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							You can view, edit, delete or add new categories from here.
+						</div>
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Name</th>
+									<th scope="col">Status</th>
+									<th scope="col">Operations</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.CategoryId</td>
+										<td>@item.CategoryName</td>
+										<td>@item.CategoryStatus</td>
+										<td>
+											<a href="/Admin/Category/Update/@item.CategoryId" class="btn btn-outline-warning">Update</a>
+											<a href="/Admin/Category/Delete/@item.CategoryId" class="btn btn-outline-danger">Delete</a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<br />
+						<a href="/Admin/Category/Create" class="btn btn-outline-info">Add Category</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

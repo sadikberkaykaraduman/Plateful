@@ -1,0 +1,34 @@
+﻿@model List<ResultAboutDto>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<section class="about_section layout_padding">
+    <div class="container  ">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="img-box">
+                        <img src="@item.AboutImageUrl" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h2>
+                                @item.AboutTitle
+                            </h2>
+                        </div>
+                        <p>
+                            @item.AboutDescription
+                        </p>
+                        <a href="/About/Index/">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

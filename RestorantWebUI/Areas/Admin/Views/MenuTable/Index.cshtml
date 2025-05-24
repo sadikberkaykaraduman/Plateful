@@ -1,0 +1,53 @@
+﻿@model List<ResultMenuTableDto>
+
+@{
+    ViewData["Title"] = "IndexAsync";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<div class="card-title">Table List</div>
+					</div>
+					<div class="card-body">
+						<div class="card-sub">
+							You can view, edit, delete or add new table from here.
+						</div>
+						<table class="table mt-3">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Name</th>
+									<th scope="col">Status</th>
+									<th scope="col">Operations</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									<tr>
+										<td>@item.MenuTableId</td>
+										<td>@item.MenuTableName</td>
+										<td>@item.MenuTableStatus</td>
+										<td>
+											<a href="/Admin/MenuTable/Update/@item.MenuTableId" class="btn btn-outline-warning">Update</a>
+											<a href="/Admin/MenuTable/Delete/@item.MenuTableId" class="btn btn-outline-danger">Delete</a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+						<br />
+						<a href="/Admin/MenuTable/Create" class="btn btn-outline-info">Add Table</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,48 @@
+﻿@model CreateMessageDto
+
+<section class="book_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>
+                Send A Message To Us
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form_container">
+                    <form method="post">
+                        <div>
+                            <input type="text" asp-for="Name" class="form-control" placeholder="Your Name" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="Surname" class="form-control" placeholder="Your Surname" />
+                        </div>
+                        <div>
+                            <input type="email" asp-for="Mail" class="form-control" placeholder="Your Email" />
+                        </div>
+                        <div>
+                            <input type="text" asp-for="Phone" class="form-control" placeholder="Phone Number" />
+                        </div>
+                        <div>
+                            <input type="email" asp-for="Subject" class="form-control" placeholder="Subject" />
+                        </div>
+                        <div>
+                            <textarea type="number"asp-for="MessageContent" class="form-control" placeholder="Message"></textarea>
+                            <input type="hidden" value="@DateTime.Now" asp-for="SendDate" />
+                        </div>
+                        <div class="btn_box">
+                            <button>
+                                SEND
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="map_container ">
+                    <div id="googleMap"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

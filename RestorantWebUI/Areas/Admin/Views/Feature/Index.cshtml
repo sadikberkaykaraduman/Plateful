@@ -1,0 +1,62 @@
+﻿@model List<ResultFeatureDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Feature Page</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-sub">
+                            You can view, edit, delete or add new features from here.
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="card-body">
+                            <input type="hidden" asp-for="@item.FeatureId" />
+                            <div class="form-group">
+                                <label for="categoryname">Page 1 Title</label>
+                                <input type="text" class="form-control" value="@item.FeatureTitle1">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Page 1 Description</label>
+                                <textarea class="form-control">@item.FeatureDescription1</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Page 2 Title</label>
+                                <input type="text" class="form-control" value="@item.FeatureTitle2">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Page 2 Description</label>
+                                <textarea class="form-control">@item.FeatureDescription2</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Page 3 Title</label>
+                                <input type="text" class="form-control" value="@item.FeatureTitle3">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryname">Page 3 Description</label>
+                                <textarea class="form-control">@item.FeatureDescription3</textarea>
+                            </div>
+                            <a href="/Admin/Feature/Update/@item.FeatureId" class="btn btn-outline-warning">Update</a>
+                            <a href="/Admin/Feature/Delete/@item.FeatureId" class="btn btn-outline-danger">Delete</a>
+
+                        </div>
+                    }
+                    <div class="card-action">
+                        <a href="/Admin/Feature/Create" class="btn btn-outline-info">Add Category</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
